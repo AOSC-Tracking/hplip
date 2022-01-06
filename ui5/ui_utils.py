@@ -105,7 +105,10 @@ def value_str(data):
     if data is None:
         return ""
     try:
-        if not PY3:
+        if PY3:
+            if isinstance(data, QDateTime):
+                data = data.toString()
+        else:
             try:
                 data = data.toString()
             except AttributeError as e:
