@@ -186,7 +186,7 @@ class InfoDialog(QDialog, Ui_Dialog):
         for row, h in enumerate(history):
             dt = QDateTime()
             dt.setTime_t(int(h.timedate))
-            dt = value_str(dt)
+            dt = value_str(dt.toString())
 
             ess = device.queryString(h.event_code, 0)
 
