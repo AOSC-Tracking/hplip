@@ -754,6 +754,15 @@ def canEnterGUIMode4(): # qt4
             log.warn(e)
             return False
 
+        try:
+            import ui4
+        except ImportError:
+            try:
+                import ui5.setupdialog
+            except ImportError as e:
+                log.warn(e)
+                return False
+
     return True
 
 
@@ -765,6 +774,11 @@ def checkPyQtImport(): # qt3
     except ImportError:
         if os.getenv('DISPLAY') and os.getenv('STARTED_FROM_MENU'):
             no_qt_message_gtk()
+
+        try:
+            import ui
+        except ImportError:
+            return False
 
         log.error("PyQt not installed. GUI not available. Exiting.")
         return False
@@ -813,11 +827,13 @@ def checkPyQtImport4():
         import PyQt4
         import ui4
     except ImportError:
-        import PyQt5
-        import ui5
-    else:
-        log.debug("HPLIP is not installed properly or is installed without graphical support. Please reinstall HPLIP again")
-        return False
+        try:
+            import PyQt5
+            import ui5.setupdialog
+        except ImportError:
+            log.debug('GUI not available.')
+            return False
+
     return True
 
 # def checkPyQtImport5():

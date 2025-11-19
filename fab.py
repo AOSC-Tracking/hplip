@@ -776,14 +776,15 @@ mod.setUsage(module.USAGE_FLAG_NONE)
 opts, device_uri, printer_name, mode, ui_toolkit, loc = \
     mod.parseStdOpts(handle_device_printer=False)
 
-if ui_toolkit == 'qt3':
-    if not utils.canEnterGUIMode():
-        log.error("%s GUI mode requires GUI support (try running with --qt4). Entering interactive mode." % __mod__)
-        mode = INTERACTIVE_MODE
-else:
-    if not utils.canEnterGUIMode4():
-        log.error("%s GUI mode requires GUI support (try running with --qt3). Entering interactive mode." % __mod__)
-        mode = INTERACTIVE_MODE
+if ui_toolkit != 'none':
+    if ui_toolkit == 'qt3':
+        if not utils.canEnterGUIMode():
+            log.error("%s GUI mode requires GUI support (try running with --qt4). Entering interactive mode." % __mod__)
+            mode = INTERACTIVE_MODE
+    else:
+        if not utils.canEnterGUIMode4():
+            log.error("%s GUI mode requires GUI support (try running with --qt3). Entering interactive mode." % __mod__)
+            mode = INTERACTIVE_MODE
 
 
 if mode == GUI_MODE:
