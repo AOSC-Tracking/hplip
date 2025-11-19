@@ -765,10 +765,9 @@ class SetupDialog(QDialog, Ui_Dialog):
                 pass
 
     def OtherPPDButton_clicked(self, b):
-        ppd_file = to_unicode(QFileDialog.getOpenFileName(self, self.__tr("Select PPD File"),
-                                                          sys_conf.get(
-            'dirs', 'ppd'),
-            self.__tr("PPD Files (*.ppd *.ppd.gz);;All Files (*)")))
+        ppd_file = QFileDialog.getOpenFileName(self, self.__tr("Select PPD File"),
+                                                sys_conf.get('dirs', 'ppd'),
+                                                self.__tr("PPD Files (*.ppd *.ppd.gz);;All Files (*)"))[0]
 
         if ppd_file and os.path.exists(ppd_file):
             self.print_ppd = (ppd_file, cups.getPPDDescription(ppd_file))
