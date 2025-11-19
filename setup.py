@@ -399,9 +399,19 @@ else: # INTERACTIVE_MODE
             #log.warning("Cannot setup fax - device does not have fax feature.")
             setup_fax = False
 
+        norm_model = models.normalizeModelName(model).lower()
+
+        # get out if the found model is standalone scanner, hp-setup is printer/fax setup tool
+        if 'scanjet' in norm_model:
+            log.error('The device {} is a standalone scanner. '
+                      'hp-setup is a printer/MFD setup tool, '
+                      'not scanner installation tool. '.format(model))
+            log.info(log.bold('Scanners do not need a installation, but they may '
+                              'require a binary plugin (install by \'hp-plugin -i\').'))
+            clean_exit(1)
+
         # ******************************* PLUGIN
 
-        norm_model = models.normalizeModelName(model).lower()
         plugin = mq.get('plugin', PLUGIN_NONE)
 
         if ignore_plugin_check is False and plugin > PLUGIN_NONE:
