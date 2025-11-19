@@ -241,6 +241,7 @@ class ProgressMeter(object):
         sys.stdout.write(y)
 
         sys.stdout.flush()
+        sys.stdout.write('\n')
         self.prev_length = len(y)
         self.spinner_pos = (self.spinner_pos + 1) % 8
 
