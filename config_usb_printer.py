@@ -28,6 +28,7 @@ __doc__ = "Udev invokes this tool. Tool detects the plugin, Smart Install (C/DVD
 # Std Lib
 import sys
 import os
+import time
 
 # Local
 from base.g import *
@@ -181,9 +182,10 @@ try:
        # ******************************* RUNNING FIRMWARE DOWNLOAD TO DEVICE FOR SUPPORTED PRINTER'S
        fw_download_req = mq.get('fw-download', False)
        if fw_download_req:
-           fw_cmd = "hp-firmware -y3 -s %s"%param
+           fw_cmd = "hp-firmware -n -y3 -s %s"%param
            log.info(fw_cmd)
            fw_sts, fw_out = utils.run(fw_cmd)
+           time.sleep(5)
            if fw_sts == 0:
                log.debug("Firmware downloaded to %s "%device_uri)
            else:
