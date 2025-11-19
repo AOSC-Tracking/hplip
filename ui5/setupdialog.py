@@ -1414,6 +1414,18 @@ class SetupDialog(QDialog, Ui_Dialog):
             back_end, is_hp, bus, model, serial, dev_file, host, zc, port = device.parseDeviceURI(
                 self.device_uri)
             self.model = models.normalizeModelName(model).lower()
+            if 'scanjet' in self.model:
+                FailureUI(self,
+                          self.__tr('<b>The device {} is a standalone '
+                                    'scanner.</b> <p>\'hp-setup\' is a tool '
+                                    'for installing printers and multifunction '
+                                    'devices. Scanners supported by HPLIP '
+                                    'work out-of-the-box after HPLIP installation, '
+                                    'or they may require a binary plugin, which you '
+                                    'can install by \'hp-plugin -i\'.</p>'.format(model)))
+                self.displayPage(PAGE_DEVICES)
+                return
+
             self.showAddPrinterPage()
 
         elif p == PAGE_ADD_PRINTER:
