@@ -37,18 +37,12 @@ static int bb_load(struct escl_session *ps, const char *so)
    int stat=1;
    
    /* Load hpmud manually with symbols exported. Otherwise the plugin will not find it. */ 
-   if ((ps->hpmud_handle = load_library("libhpmud.so.0")) == NULL)
-   {
-	   if ((ps->hpmud_handle = load_library("libhpmud.so.0")) == NULL)
-           goto bugout;
-   }
+	 if ((ps->hpmud_handle = load_library("libhpmud.so.0")) == NULL)
+         goto bugout;
 
    /* Load math library manually with symbols exported (Ubuntu 8.04). Otherwise the plugin will not find it. */ 
-   if ((ps->math_handle = load_library("libm.so")) == NULL)
-   {
-      if ((ps->math_handle = load_library("libm.so.6")) == NULL)
-         goto bugout;
-   } 
+   if ((ps->math_handle = load_library("libm.so.6")) == NULL)
+      goto bugout;
    if ((ps->bb_handle = load_plugin_library(UTILS_SCAN_PLUGIN_LIBRARY, so)) == NULL)
    {
       SendScanEvent(ps->uri, EVENT_PLUGIN_FAIL);
