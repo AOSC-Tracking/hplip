@@ -2314,14 +2314,15 @@ class PasswordDialog(QDialog):
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 def showPasswordUI(prompt):
+    dlg = None
+
     try:
         dlg = PasswordDialog(prompt, None)
+    except Exception as e:
+        log.error('Unable to open password dialog due following error:\n {}'.format(e))
 
-        if dlg.exec_() == QDialog.Accepted:
-            return (dlg.getUsername(), dlg.getPassword())
-
-    finally:
-        pass
+    if dlg and dlg.exec_() == QDialog.Accepted:
+        return (dlg.getUsername(), dlg.getPassword())
 
     return ("", "")
 
