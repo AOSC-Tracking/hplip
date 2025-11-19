@@ -20,6 +20,7 @@
 #include "orblitei.h"
 #include "orblite.h"//Added New
 #include <math.h>
+#include <dlfcn.h>
 #include "utils.h"
 #include "io.h"
 
@@ -195,7 +196,7 @@ bugout:
 
 static int bb_unload(SANE_THandle ps)
 {
-   _DBG("Calling orblite bb_unload: \n");
+   DBG("Calling orblite bb_unload: \n");
    if (ps->bb_handle)
    {
       dlclose(ps->bb_handle);
