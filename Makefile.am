@@ -689,6 +689,12 @@ if HPLIP_CLASS_DRIVER
 filterdir=$(cupsfilterdir)
 printpluginsdir=$(cupsfilterdir)
 
+#
+# HP Plugin
+#
+
+#pkgplugindir=$(bindir)
+#pkgplugin_DATA=hp-plugin
 
 dist_filter_DATA = hpcups hpps dat2drv
 dist_printplugins_DATA = prnt/plugins/hbpl1-arm32.so prnt/plugins/hbpl1-arm64.so prnt/plugins/hbpl1-x86_32.so prnt/plugins/hbpl1-x86_64.so prnt/plugins/lj-arm32.so prnt/plugins/lj-arm64.so prnt/plugins/lj-x86_32.so prnt/plugins/lj-x86_64.so
