@@ -399,7 +399,20 @@ class PluginHandle(object):
                     log.error("Target file %s does not exist. File copy failed." % trg)
                     continue
                 else:
-                    os.chmod(trg, stat.S_IRWXU | stat.S_IRGRP | stat.S_IXGRP | stat.S_IROTH | stat.S_IXOTH)
+                    if trg == '/etc/udev/rules.d/S99-2000S1.rules' or \
+                       trg == '/etc/udev/rules.d/40-libsane.rules':
+                        os.chmod(trg, 0o644)
+                        with open(trg, 'r') as udev_f:
+                            content = udev_f.read()
+
+                        content = content.replace('libsane_rules_end', 'libsane_usb_rules_end')
+                        content = content.replace('GROUP="scanner", ', '')
+
+                        with open(trg, 'w') as udev_f:
+                            udev_f.write(content)
+
+                    else:
+                        os.chmod(trg, stat.S_IRWXU | stat.S_IRGRP | stat.S_IXGRP | stat.S_IROTH | stat.S_IXOTH)
 
                 if link:
                     if os.path.exists(link):
