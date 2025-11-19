@@ -30,6 +30,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <sys/time.h>
 #include "sane.h"
 #include "saneopts.h"
 #include "common.h"
@@ -2090,7 +2091,7 @@ void sclpml_close(SANE_Handle handle)
     DBG(8, "sane_hpaio_close(): %s %d\n", __FILE__, __LINE__); 
     if (hpaio == NULL || hpaio != session)
     {
-      BUG("invalid sane_close\n");
+      BUG_SCAN("invalid sane_close\n");
       return;
      }
 
