@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python -B
 # -*- coding: utf-8 -*-
 #
 # (c) Copyright 2003-2015 HP Development Company, L.P.
