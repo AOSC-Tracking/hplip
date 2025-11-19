@@ -1680,19 +1680,6 @@ static BOOL bits_flush_to_eol (
                  & ((1u<<n_bits) - 1u);                                      \
 }
 
-#if 0
-
-#define BITS_LOAD(g, num_bits, par_result) {                                 \
-    int n_bits = (int)(num_bits);                                            \
-                                                                             \
-    par_result = g->gb_cache;                                                \
-                                                                             \
-    asm ("extract %1,%2,%0"                                                  \
-        : "=d" (par_result)                                                  \
-        : "dI" (g->gb_cache_cnt - n_bits), "dI" (n_bits), "0" (par_result)); \
-}
-
-#endif
 
 
 

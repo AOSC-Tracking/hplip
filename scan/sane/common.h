@@ -53,8 +53,6 @@
 
 #define BACKEND_NAME hpaio
 
-#define BREAKPOINT __asm( "int3" )
-
 #define OK 1
 #define ERROR 0
 #define MAX_LIST_SIZE 32
