@@ -414,20 +414,34 @@ extern SANE_Status sane_hpaio_open(SANE_String_Const devicename, SANE_Handle * p
 
 extern void sane_hpaio_close(SANE_Handle handle)
 {
-    if (strcmp(*((char **)handle), "MARVELL") == 0)
-       return marvell_close(handle);
-    if (strcmp(*((char **)handle), "SOAP") == 0)
-       return soap_close(handle);
-    if (strcmp(*((char **)handle), "SOAPHT") == 0)
-       return soapht_close(handle);
-    if (strcmp(*((char **)handle), "LEDM") == 0)
-       return ledm_close(handle);
-    if (strcmp(*((char **)handle), "SCL-PML") == 0)
-       return sclpml_close(handle);
-    if (strcmp(*((char **)handle), "ESCL") == 0)
-       return escl_close(handle);
-    if (strcmp(*((char **)handle), "ORBLITE") == 0)
-       return orblite_close(handle);
+    if (strcmp(*((char **)handle), "MARVELL") == 0) {
+       marvell_close(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "SOAP") == 0) {
+       soap_close(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "SOAPHT") == 0) {
+       soapht_close(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "LEDM") == 0) {
+       ledm_close(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "SCL-PML") == 0) {
+       sclpml_close(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "ESCL") == 0) {
+       escl_close(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "ORBLITE") == 0) {
+       orblite_close(handle);
+       return;
+    }
 }  /* sane_hpaio_close() */
 
 extern const SANE_Option_Descriptor * sane_hpaio_get_option_descriptor(SANE_Handle handle, SANE_Int option)
@@ -547,20 +561,34 @@ extern SANE_Status sane_hpaio_read(SANE_Handle handle, SANE_Byte *data, SANE_Int
 /* Note, sane_cancel is called normally not just during IO abort situations. */
 extern void sane_hpaio_cancel( SANE_Handle handle )
 {
-    if (strcmp(*((char **)handle), "MARVELL") == 0)
-       return marvell_cancel(handle);
-    if (strcmp(*((char **)handle), "SOAP") == 0)
-       return soap_cancel(handle);
-    if (strcmp(*((char **)handle), "SOAPHT") == 0)
-       return soapht_cancel(handle);
-    if (strcmp(*((char **)handle), "LEDM") == 0)
-       return ledm_cancel(handle);
-    if (strcmp(*((char **)handle), "SCL-PML") == 0)
-       return sclpml_cancel(handle);
-    if (strcmp(*((char **)handle), "ESCL") == 0)
-       return escl_cancel(handle);
-    if (strcmp(*((char **)handle), "ORBLITE") == 0)
-       return orblite_cancel(handle);
+    if (strcmp(*((char **)handle), "MARVELL") == 0) {
+       marvell_cancel(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "SOAP") == 0) {
+       soap_cancel(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "SOAPHT") == 0) {
+       soapht_cancel(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "LEDM") == 0) {
+       ledm_cancel(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "SCL-PML") == 0) {
+       sclpml_cancel(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "ESCL") == 0) {
+       escl_cancel(handle);
+       return;
+    }
+    if (strcmp(*((char **)handle), "ORBLITE") == 0) {
+       orblite_cancel(handle);
+       return;
+    }
 }  /* sane_hpaio_cancel() */
 
 extern SANE_Status sane_hpaio_set_io_mode(SANE_Handle handle, SANE_Bool nonBlocking)
