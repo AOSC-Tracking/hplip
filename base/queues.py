@@ -101,7 +101,7 @@ def parseQueues(mode):
             try:
                 match = LPSTAT_PATTERN.search(p)
                 printer_name = match.group(1)
-                device_uri = match.group(2)
+                device_uri = match.group(3)
                 cups_printers.append((printer_name, device_uri))
             except AttributeError:
                 pass
