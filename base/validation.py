@@ -45,7 +45,7 @@ class GPG_Verification(DigiSign_Verification):
     def __init__(self, keyservers = ['keyserver.ubuntu.com',
                                      'pgp.surf.nl',
                                      'pgp.mit.edu'],
-                 key = 0x4ABA2F66DBD5A95894910E0673D770CDA59047B9):
+                 key = 0x82FFA7C6AA7411D934BDE173AC69536A2CF3A243):
         self.__keyservers = keyservers
         self.__key = key
         self.__gpg = utils.which('gpg',True)
