@@ -2286,7 +2286,8 @@ class Device(object):
                 self.callback()
 
         if total_bytes_to_write != bytes_out:
-            raise Error(ERROR_DEVICE_IO_ERROR)
+            raise Error(ERROR_DEVICE_IO_ERROR, 'Number of written '
+                        'bytes by hpmudext mismatch with expected amount.')
 
         return bytes_out
 
