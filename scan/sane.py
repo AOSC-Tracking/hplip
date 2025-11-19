@@ -426,7 +426,8 @@ class ScanThread(threading.Thread):
         self.dev = device
         self.update_queue = update_queue
         self.event_queue = event_queue
-        self.buffer_fd, self.buffer_path = utils.make_temp_file(prefix='hpscan')
+        self.buffer_fd, self.buffer_path = utils.make_temp_file(dir='/var/tmp',
+                                                                prefix='hpscan')
         self.buffer = os.fdopen(self.buffer_fd, "w+b")
         self.format = -1
         self.format_name = ''
