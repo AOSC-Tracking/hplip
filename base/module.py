@@ -435,6 +435,12 @@ class Module(object):
         if show_usage is not None:
             sys.exit(0)
 
+        if mode == GUI_MODE:
+            if not utils.canEnterGUIMode4():
+                log.warn("GUI mode not available - switching to interactive mode.")
+                mode = INTERACTIVE_MODE
+                ui_toolkit = 'none'
+
         self.mode = mode
         return opts, device_uri, printer_name, mode, ui_toolkit, lang
 
