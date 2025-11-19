@@ -505,7 +505,7 @@ def sort_dict_by_value(d):
 
 
 def commafy(val):
-    return locale.format("%s", val, grouping=True)
+    return locale.format_string("%s", val, grouping=True)
 
 
 def format_bytes(s, show_bytes=False):
