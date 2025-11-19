@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
 Name=HPLIP Graphical Tools
 GenericName=Printer Graphical Tools
@@ -7,6 +6,6 @@ Comment=View device status, ink levels and perform maintenance etc.
 Exec=hp-toolbox
 Icon=hp_logo
 Terminal=false
-Categories=Application;Utility;
 X-KDE-StartupNotify=false
 StartupNotify=false
+Categories=System;
