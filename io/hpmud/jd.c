@@ -208,7 +208,22 @@ enum HPMUD_RESULT __attribute__ ((visibility ("hidden"))) jd_open(mud_device *pd
    {
        /* Make sure uri model matches device id model. */
        hpmud_get_uri_model(pd->uri, uri_model, sizeof(uri_model));
+
+       /* remove possible hp_ string */
+       if (strncasecmp(uri_model, "HP_", 3) == 0)
+       {
+         memmove(uri_model, uri_model + 3, 127);
+         uri_model[127] = '\0';
+       }
+
        hpmud_get_model(pd->id, model, sizeof(model));
+       /* remove possible hp_ string */
+       if (strncasecmp(model, "HP_", 3) == 0)
+       {
+         memmove(model, model + 3, 127);
+         model[127] = '\0';
+       }
+
        if (strcasecmp(uri_model, model) != 0)
        {
           stat = HPMUD_R_INVALID_URI;  /* different device plugged in */
