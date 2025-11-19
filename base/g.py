@@ -405,9 +405,11 @@ ERROR_STRINGS = {
 
 
 class Error(Exception):
-    def __init__(self, opt=ERROR_INTERNAL):
+    def __init__(self, opt=ERROR_INTERNAL, msg=None):
         self.opt = opt
         self.msg = ERROR_STRINGS.get(opt, ERROR_STRINGS[ERROR_INTERNAL])
+        if msg:
+            self.msg = '{} - {}'.format(self.msg, msg)
         log.debug("Exception: %d (%s)" % (opt, self.msg))
         Exception.__init__(self, self.msg, opt)
 
