@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 __version__ = '2.2'
 __mod__ = 'hp-uiscan'
 __title__ = 'Scan Utility'
