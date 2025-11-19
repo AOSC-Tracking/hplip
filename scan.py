@@ -1950,7 +1950,7 @@ try:
         if ('editor' in dest or 'viewer' in dest or 'email' in dest or 'print' in dest) \
             and not file_saved:
 
-            output_fd, output = utils.make_temp_file(suffix='.png')
+            output_fd, output = utils.make_temp_file(dir='/var/tmp', suffix='.png')
             try:
                 '''pyPlatform = platform.python_version()
                 num = pyPlatform.split('.')
