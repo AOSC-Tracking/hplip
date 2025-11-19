@@ -73,7 +73,7 @@ endif
 # The following is a interlibrary dependency that must be compiled first.
 libsane_hpaio_la_LIBADD = libhpip.la libhpmud.la libhpipp.la $(DBUS_LIBS) -lcups -ldl
 #libsane_hpaio_la_CFLAGS = -DWITH_NONAMESPACES -DSOAP_DEBUG
-libsane_hpaio_la_CFLAGS = $(DBUS_CFLAGS) -Iprotocol
+libsane_hpaio_la_CFLAGS = $(DBUS_CFLAGS) -Iprotocol -D_GNU_SOURCE
 
 if NETWORK_BUILD
 libsane_hpaio_la_LIBADD += libhpdiscovery.la
